@@ -52,12 +52,31 @@ const cardList = document.getElementById('card-list');
 const emptyState = document.getElementById('empty-state');
 const startReviewButton = document.getElementById('start-review');
 const formError = document.getElementById('form-error');
+const cardCount = document.getElementById('card-count');
+
+// e.g. "12 cards in this deck · 5 still learning · 3 new"
+// "New" means the card has never been marked in review (status is null).
+function renderCardCount(cards) {
+  const learningCount = cards.filter(function (c) {
+    return c.status === 'learning';
+  }).length;
+  const newCount = cards.filter(function (c) {
+    return !c.status;
+  }).length;
+  const cardWord = cards.length === 1 ? 'card' : 'cards';
+  cardCount.textContent =
+    cards.length + ' ' + cardWord + ' in this deck · ' +
+    learningCount + ' still learning · ' +
+    newCount + ' new';
+  cardCount.hidden = cards.length === 0;
+}
 
 function renderCards() {
   const cards = loadCards();
   cardList.innerHTML = '';
   emptyState.hidden = cards.length > 0;
   startReviewButton.disabled = cards.length === 0;
+  renderCardCount(cards);
 
   cards.forEach(function (card) {
     const item = document.createElement('li');
