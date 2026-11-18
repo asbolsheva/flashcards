@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
-  background: #f5f5f5;
-  color: #222;
+  background: #faf5ee;
+  color: #3b2a22;
 }
 
 main {
@@ -16,9 +16,9 @@ form {
   flex-direction: column;
   gap: 8px;
   padding: 20px;
-  background: #fff;
+  background: #fffcf8;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(90, 50, 20, 0.12);
 }
 
 h2 {
@@ -32,7 +32,7 @@ label {
 textarea {
   font: inherit;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #e3d5c6;
   border-radius: 4px;
   resize: vertical;
 }
@@ -43,14 +43,14 @@ button {
   font: inherit;
   font-weight: 600;
   color: #fff;
-  background: #2563eb;
+  background: #c2410c;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #1d4ed8;
+  background: #9a3412;
 }
 
 #saved-cards {
@@ -77,9 +77,9 @@ button:hover {
   align-items: center;
   gap: 12px;
   padding: 16px 20px;
-  background: #fff;
+  background: #fffcf8;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(90, 50, 20, 0.12);
 }
 
 .card-content {
@@ -93,7 +93,7 @@ button:hover {
   padding: 6px 10px;
   font-size: 0.85rem;
   color: #b91c1c;
-  background: #fff;
+  background: #fffcf8;
   border: 1px solid #b91c1c;
 }
 
@@ -112,16 +112,16 @@ button:hover {
 
 .card .card-answer {
   margin-top: 8px;
-  color: #555;
+  color: #6b574a;
 }
 
 #empty-state {
-  color: #777;
+  color: #7d685a;
 }
 
 .card-count {
   margin: -8px 0 16px;
-  color: #555;
+  color: #6b574a;
 }
 
 [hidden] {
@@ -145,18 +145,18 @@ button:hover {
 }
 
 button:disabled {
-  background: #9ca3af;
+  background: #c9b8a8;
   cursor: not-allowed;
 }
 
 button.secondary {
-  color: #2563eb;
-  background: #fff;
-  border: 1px solid #2563eb;
+  color: #c2410c;
+  background: #fffcf8;
+  border: 1px solid #c2410c;
 }
 
 button.secondary:hover {
-  background: #eff6ff;
+  background: #fdf0e3;
 }
 
 .review-card {
@@ -165,16 +165,16 @@ button.secondary:hover {
   justify-content: center;
   min-height: 220px;
   padding: 24px;
-  background: #fff;
+  background: #fffcf8;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(90, 50, 20, 0.12);
   text-align: center;
   cursor: pointer;
   user-select: none;
 }
 
 .review-card.flipped {
-  background: #eff6ff;
+  background: #fdf0e3;
 }
 
 .review-side {
@@ -183,7 +183,7 @@ button.secondary:hover {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #777;
+  color: #7d685a;
 }
 
 .review-text {
@@ -195,7 +195,7 @@ button.secondary:hover {
 .review-hint {
   margin: 20px 0 0;
   font-size: 0.8rem;
-  color: #999;
+  color: #8c7768;
 }
 
 .review-actions {
