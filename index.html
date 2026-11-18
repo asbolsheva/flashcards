@@ -15,10 +15,12 @@
         <h2>Add a card</h2>
 
         <label for="question">Question</label>
-        <textarea id="question" name="question" rows="3" required></textarea>
+        <textarea id="question" name="question" rows="3" aria-describedby="form-error"></textarea>
 
         <label for="answer">Answer</label>
-        <textarea id="answer" name="answer" rows="3" required></textarea>
+        <textarea id="answer" name="answer" rows="3" aria-describedby="form-error"></textarea>
+
+        <p id="form-error" class="form-error" role="alert" hidden></p>
 
         <button type="submit">Add card</button>
       </form>

@@ -24,6 +24,13 @@ function addCard(question, answer) {
   saveCards(cards);
 }
 
+function deleteCard(id) {
+  const cards = loadCards().filter(function (c) {
+    return c.id !== id;
+  });
+  saveCards(cards);
+}
+
 function setCardStatus(id, status) {
   const cards = loadCards();
   const card = cards.find(function (c) {
@@ -44,6 +51,7 @@ const answerInput = document.getElementById('answer');
 const cardList = document.getElementById('card-list');
 const emptyState = document.getElementById('empty-state');
 const startReviewButton = document.getElementById('start-review');
+const formError = document.getElementById('form-error');
 
 function renderCards() {
   const cards = loadCards();
@@ -55,6 +63,9 @@ function renderCards() {
     const item = document.createElement('li');
     item.className = 'card';
 
+    const content = document.createElement('div');
+    content.className = 'card-content';
+
     const question = document.createElement('p');
     question.className = 'card-question';
     question.textContent = card.question;
@@ -63,10 +74,32 @@ function renderCards() {
     answer.className = 'card-answer';
     answer.textContent = card.answer;
 
-    item.appendChild(question);
-    item.appendChild(answer);
+    const deleteButton = document.createElement('button');
+    deleteButton.type = 'button';
+    deleteButton.className = 'delete-button';
+    deleteButton.textContent = 'Delete';
+    deleteButton.setAttribute('aria-label', 'Delete card: ' + card.question);
+    deleteButton.addEventListener('click', function () {
+      deleteCard(card.id);
+      renderCards();
+    });
+
+    content.appendChild(question);
+    content.appendChild(answer);
+    item.appendChild(content);
+    item.appendChild(deleteButton);
     cardList.appendChild(item);
   });
+}
+
+function showFormError(message) {
+  formError.textContent = message;
+  formError.hidden = false;
+}
+
+function clearFormError() {
+  formError.textContent = '';
+  formError.hidden = true;
 }
 
 form.addEventListener('submit', function (event) {
@@ -75,14 +108,32 @@ form.addEventListener('submit', function (event) {
   const question = questionInput.value.trim();
   const answer = answerInput.value.trim();
 
+  // Reject empty or whitespace-only input so blank cards can't be created.
   if (!question || !answer) {
+    showFormError('Please fill in both the question and the answer.');
+    (question ? answerInput : questionInput).focus();
     return;
   }
 
+  clearFormError();
   addCard(question, answer);
   renderCards();
   form.reset();
   questionInput.focus();
+});
+
+questionInput.addEventListener('input', clearFormError);
+answerInput.addEventListener('input', clearFormError);
+
+// Shift+Enter in either field adds the card. Plain Enter inserts a new line.
+// isComposing skips the Enter that confirms IME input (e.g. Japanese, Chinese).
+[questionInput, answerInput].forEach(function (input) {
+  input.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' && event.shiftKey && !event.isComposing) {
+      event.preventDefault();
+      form.requestSubmit();
+    }
+  });
 });
 
 // ---- Review view: flip cards and mark them ----

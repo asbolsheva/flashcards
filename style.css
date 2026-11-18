@@ -66,11 +66,39 @@ button:hover {
   gap: 12px;
 }
 
+.form-error {
+  margin: 0;
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
 .card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   padding: 16px 20px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.card .delete-button {
+  margin-top: 0;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  color: #b91c1c;
+  background: #fff;
+  border: 1px solid #b91c1c;
+}
+
+.card .delete-button:hover {
+  background: #fef2f2;
 }
 
 .card p {
