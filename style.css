@@ -119,6 +119,11 @@ button:hover {
   color: #777;
 }
 
+.card-count {
+  margin: -8px 0 16px;
+  color: #555;
+}
+
 [hidden] {
   display: none !important;
 }
