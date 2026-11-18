@@ -10,22 +10,49 @@
   <main>
     <h1>Flashcards</h1>
 
-    <form id="add-card-form">
-      <h2>Add a card</h2>
+    <div id="manage-view">
+      <form id="add-card-form">
+        <h2>Add a card</h2>
 
-      <label for="question">Question</label>
-      <textarea id="question" name="question" rows="3" required></textarea>
+        <label for="question">Question</label>
+        <textarea id="question" name="question" rows="3" required></textarea>
 
-      <label for="answer">Answer</label>
-      <textarea id="answer" name="answer" rows="3" required></textarea>
+        <label for="answer">Answer</label>
+        <textarea id="answer" name="answer" rows="3" required></textarea>
 
-      <button type="submit">Add card</button>
-    </form>
+        <button type="submit">Add card</button>
+      </form>
 
-    <section id="saved-cards">
-      <h2>Saved cards</h2>
-      <p id="empty-state" hidden>No cards yet. Add your first one above.</p>
-      <ul id="card-list"></ul>
+      <section id="saved-cards">
+        <div class="section-header">
+          <h2>Saved cards</h2>
+          <button type="button" id="start-review">Start review</button>
+        </div>
+        <p id="empty-state" hidden>No cards yet. Add your first one above.</p>
+        <ul id="card-list"></ul>
+      </section>
+    </div>
+
+    <section id="review-view" hidden>
+      <div class="section-header">
+        <h2>Review</h2>
+        <button type="button" id="exit-review" class="secondary">Exit review</button>
+      </div>
+
+      <div id="review-session">
+        <div id="review-card" class="review-card">
+          <p id="review-side" class="review-side">Question</p>
+          <p id="review-text" class="review-text"></p>
+          <p class="review-hint">Click or press Space to flip</p>
+        </div>
+
+        <div class="review-actions">
+          <button type="button" id="mark-learning" class="secondary">Still learning</button>
+          <button type="button" id="mark-known">Known</button>
+        </div>
+      </div>
+
+      <p id="review-done" hidden>You've gone through all the cards.</p>
     </section>
   </main>
 
